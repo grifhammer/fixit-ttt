@@ -7,90 +7,74 @@ Featured on JavaScript Kit (http://javascriptkit.com)
 For this and over 400+ free scripts, visit http://javascriptkit.com
 */
 
-//if IE4/NS6, apply style
-if (document.all||document.getElementById){
-document.write('<style>.tictac{')
-document.write('width:50px;height:50px;')
-document.write('}</style>')
-}
-
-var sqr1
-var sqr2
-var sqr3
-var sqr4
-var sqr5
-var sqr6
-var sqr7
-var sqr8
-var sqr9
-var sqr1T = 0
-var sqr2T = 0
-var sqr3T = 0
-var sqr4T = 0
-var sqr5T = 0
-var sqr6T = 0
-var sqr7T = 0
-var sqr8T = 0
-var sqr9T = 0
+var sqrs
+var sqrNames = ["sqr1", "sqr2", "sqr3",
+                "sqr4", "sqr5", "sqr6",
+                "sqr7", "sqr8", "sqr9"];
+var sqrT[0,0,0,
+         0,0,0
+         0,0,0];
 var moveCount = 0
 var turn = 0
-var mode = 1
+var numPlayers = 1
+
+// puts values of each button into the variables below
 
 function vari()
 {
-sqr1 = document.tic.sqr1.value
-sqr2 = document.tic.sqr2.value
-sqr3 = document.tic.sqr3.value
-sqr4 = document.tic.sqr4.value
-sqr5 = document.tic.sqr5.value
-sqr6 = document.tic.sqr6.value
-sqr7 = document.tic.sqr7.value
-sqr8 = document.tic.sqr8.value
-sqr9 = document.tic.sqr9.value
+
+  for(i = 0; i<9; i++){
+    sqrs[i] = document.tic.sqrNames[i].value
+  }
 }
-function check()
+
+// Check to see if var checkThis won
+
+//TODO
+// change "You Win!" to a new variable called message that gets passed into this function
+function check(checkThis)
 {
-  if(sqr1 == " X " && sqr2 == " X " && sqr3 == " X ")
+  if(sqr1 == checkThis && sqr2 == checkThis && sqr3 == checkThis)
   {
     alert("You Win!")
     reset()
   } 
-  else if(sqr4 == " X " && sqr5 == " X " && sqr6 == " X ")
+  else if(sqr4 == checkThis && sqr5 == checkThis && sqr6 == checkThis)
   {
     alert("You Win!")
     reset()
   } 
-  else if(sqr7 == " X " && sqr8 == " X " && sqr9 == " X ")
+  else if(sqr7 == checkThis && sqr8 == checkThis && sqr9 == checkThis)
   {
     alert("You Win!")
     reset()
   }
-  else if(sqr1 == " X " && sqr5 == " X " && sqr9 == " X ")
+  else if(sqr1 == checkThis && sqr5 == checkThis && sqr9 == checkThis)
   {
     alert("You Win!")
     reset()
   }
-  else if(sqr1 == " X " && sqr4 == " X " && sqr7 == " X ")
+  else if(sqr1 == checkThis && sqr4 == checkThis && sqr7 == checkThis)
   {
     alert("You Win!")
     reset()
   }
-  else if(sqr2 == " X " && sqr5 == " X " && sqr8 == " X ")
+  else if(sqr2 == checkThis && sqr5 == checkThis && sqr8 == checkThis)
   {
     alert("You Win!")
     reset()
   }
-  else if(sqr3 == " X " && sqr6 == " X " && sqr9 == " X ")
+  else if(sqr3 == checkThis && sqr6 == checkThis && sqr9 == checkThis)
   {
     alert("You Win!")
     reset()
   }
-  else if(sqr1 == " X " && sqr5 == " X " && sqr9 == " X ")
+  else if(sqr1 == checkThis && sqr5 == checkThis && sqr9 == checkThis)
   {
     alert("You Win!")
     reset()
   }
-  else if(sqr3 == " X " && sqr5 == " X " && sqr7 == " X ")
+  else if(sqr3 == checkThis && sqr5 == checkThis && sqr7 == checkThis)
   {
     alert("You Win!")
     reset()
@@ -103,6 +87,8 @@ function check()
   } 
 }
 
+// Check to see if Computer Wins
+// TODO
 function check2()
 {
   vari()
@@ -154,6 +140,11 @@ function check2()
   }
 }
 
+
+// this guy is a moron and this is just check1 with a different message
+// TODO
+// Obsolete code that is never used
+// can be replaced with new check() function that has variable message
 function player1Check()
 {
   if(sqr1 == " X " && sqr2 == " X " && sqr3 == " X ")
@@ -208,6 +199,8 @@ function player1Check()
   } 
 }
 
+// 
+
 function player2Check()
 {
   vari()
@@ -259,6 +252,7 @@ function player2Check()
   }
 }
 
+// Checks if there have been 9 turns and then calls draw
 function drawCheck()
 {
   vari()
@@ -672,9 +666,4 @@ function reset()
   vari()
   turn = 0
   moveCount = 0
-}
-
-function resetter()
-{
-  reset()
 }
